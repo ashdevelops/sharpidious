@@ -10,7 +10,8 @@ var settingsFile = $"{directory}/sharpidious.json";
 
 if (!File.Exists(settingsFile))
 {
-    throw new Exception($"Couldn't find settings file in directory '{directory}'");
+   Log.Logger.Error($"Couldn't find settings file in directory '{directory}'");
+   return;
 }
 
 var host = Host.CreateDefaultBuilder()
