@@ -1,5 +1,5 @@
 # sharpidious
-Static code &amp; rule enforcement analyser for C#
+Static code analyser &amp; rule enforcement analyser for C#
 
 Create a file called `sharpidious.json` in your root folder with your configuration
 
