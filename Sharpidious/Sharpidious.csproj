@@ -9,7 +9,8 @@
         <PackAsTool>true</PackAsTool>
         <ToolCommandName>sharpidious</ToolCommandName>
         <PackageOutputPath>./nupkg</PackageOutputPath>
-        <Version>1.0.3</Version>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <Version>1.0.4</Version>
     </PropertyGroup>
 
     <ItemGroup>
