@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 
-namespace CodeQualityChecker;
+namespace Sharpidious;
 
 public class Settings
 {

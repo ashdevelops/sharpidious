@@ -1,4 +1,4 @@
-namespace CodeQualityChecker;
+namespace Sharpidious;
 
 public class Checker(Settings settings)
 {

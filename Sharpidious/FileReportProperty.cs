@@ -1,4 +1,4 @@
-namespace CodeQualityChecker;
+namespace Sharpidious;
 
 public class FileReportProperty(string name)
 {

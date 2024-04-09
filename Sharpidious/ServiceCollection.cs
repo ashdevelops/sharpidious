@@ -1,7 +1,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 
-namespace CodeQualityChecker;
+namespace Sharpidious;
 
 public static class ServiceCollection
 {
