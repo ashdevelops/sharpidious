@@ -8,7 +8,7 @@ public class Checker(Settings settings)
         
         foreach (var report in reports)
         {
-            if (settings.IgnoredClassNames.Contains(report.Name))
+            if (settings.IgnoredClassNames.Contains(report.Name) || report.Name.EndsWith(".AssemblyInfo"))
             {
                 continue;
             }
@@ -28,6 +28,13 @@ public class Checker(Settings settings)
             if (rules.TryGetValue("class.maxLineCount", out var maxLineCount) && report.Lines.Length > (int)(long) maxLineCount)
             {
                 suggestions.Add($"Class {report.Name} has too many lines");
+            }
+
+            if (rules.TryGetValue("check.multipleEmptyLines", out var multipleEmptyLines) &&
+                (bool) multipleEmptyLines && 
+                HasMultipleEmptyLines(report))
+            {
+                suggestions.Add($"Class {report.Name} has multiple empty lines");
             }
             
             if (rules.TryGetValue("class.maxLineLength", out var maxLineLength))
@@ -58,5 +65,28 @@ public class Checker(Settings settings)
         }
 
         return Task.FromResult(suggestions);
+    }
+
+    private static bool HasMultipleEmptyLines(FileReport report)
+    {
+        var lines = report.Content.Split(Environment.NewLine);
+        var lastEmptyLine = -1;
+        
+        for (var i = 0; i < lines.Length; i++)
+        {
+            if (!string.IsNullOrWhiteSpace(lines[i]) || !string.IsNullOrEmpty(lines[i]))
+            {
+                continue;
+            }
+            
+            if (lastEmptyLine == i - 1)
+            {
+                return true;
+            }
+                
+            lastEmptyLine = i;
+        }
+
+        return false;
     }
 }

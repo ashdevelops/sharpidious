@@ -9,7 +9,8 @@ Create a file called `sharpidious.json` in your root folder with your configurat
         "class.maxNameLength": 40,
         "class.maxLineCount": 300,
         "class.maxLineLength": 120,
-        "method.maxLineCount": 30
+        "method.maxLineCount": 30,
+        "check.multipleEmptyLines": true
     },
 
     "ignoredClassNames": [
