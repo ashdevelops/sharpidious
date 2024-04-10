@@ -4,11 +4,18 @@ public class Checker(Settings settings)
 {
     public Task<List<string>> GetSuggestionsAsync(List<FileReport> reports)
     {
+        var ignoredFileNamePhrases = new List<string>
+        {
+            ".AssemblyInfo",
+            ".NETCoreApp,Version=",
+            "GlobalUsings.g"
+        };
+        
         var suggestions = new List<string>();
         
         foreach (var report in reports)
         {
-            if (settings.IgnoredClassNames.Contains(report.Name) || report.Name.EndsWith(".AssemblyInfo"))
+            if (settings.IgnoredClassNames.Contains(report.Name) || ignoredFileNamePhrases.Any(x => report.Name.Contains(x)))
             {
                 continue;
             }
