@@ -7,6 +7,7 @@ public class Checker(Settings settings)
         var ignoredFileNamePhrases = new List<string>
         {
             ".AssemblyInfo",
+            "AssemblyAttributes",
             ".NETCoreApp,Version=",
             "GlobalUsings.g"
         };
