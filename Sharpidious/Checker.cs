@@ -9,7 +9,7 @@ public class Checker(Settings settings)
             ".AssemblyInfo",
             "AssemblyAttributes",
             ".NETCoreApp,Version=",
-            "GlobalUsings.g"
+            "GlobalUsings"
         };
         
         var suggestions = new List<string>();
@@ -30,19 +30,19 @@ public class Checker(Settings settings)
             
             if (rules.TryGetValue("class.maxNameLength", out var maxNameLength) && report.Name.Length > (int)(long) maxNameLength)
             {
-                suggestions.Add($"Class {report.Name} has too long of a name");
+                suggestions.Add($"Class '{report.Name}' has too long of a name");
             }
             
             if (rules.TryGetValue("class.maxLineCount", out var maxLineCount) && report.Lines.Length > (int)(long) maxLineCount)
             {
-                suggestions.Add($"Class {report.Name} has too many lines");
+                suggestions.Add($"Class '{report.Name}' has too many lines");
             }
 
             if (rules.TryGetValue("check.multipleEmptyLines", out var multipleEmptyLines) &&
                 (bool) multipleEmptyLines && 
                 HasMultipleEmptyLines(report))
             {
-                suggestions.Add($"Class {report.Name} has multiple empty lines");
+                suggestions.Add($"Class '{report.Name}' has multiple empty lines");
             }
             
             if (rules.TryGetValue("class.maxLineLength", out var maxLineLength))
@@ -55,7 +55,7 @@ public class Checker(Settings settings)
                     
                     if (line.Length > (int)(long) maxLineLength)
                     {
-                        suggestions.Add($"Class {report.Name} line {x} is too long");
+                        suggestions.Add($"Class '{report.Name}' line {x} is too long");
                     }
                 }
             }
@@ -66,7 +66,7 @@ public class Checker(Settings settings)
                 {
                     if (method.LineCount > (int)(long) maxMethodLineCount)
                     {
-                        suggestions.Add($"Class {report.Name} method {method.Name} has too many lines");
+                        suggestions.Add($"Class '{report.Name}' method {method.Name} has too many lines");
                     }
                 }
             }

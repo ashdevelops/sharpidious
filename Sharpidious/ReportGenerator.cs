@@ -12,6 +12,12 @@ public class ReportGenerator
 
         foreach (var file in codeFiles)
         {
+            if (file.Contains("AssemblyAttributes") || 
+                file.Contains("GlobalUsings.g"))
+            {
+                continue;
+            }
+            
             reports.Add(await GetReportForFileAsync(file));
         }
 
